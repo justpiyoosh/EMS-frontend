@@ -82,10 +82,10 @@ export default function BaseContainer() {
                             id="password"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel
+                        {/* <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
-                        />
+                        /> */}
                         <Button
                             type="submit"
                             fullWidth
@@ -96,13 +96,13 @@ export default function BaseContainer() {
                             Sign In
                         </Button>
                         <Grid container>
-                            <Grid item xs>
+                            {/* <Grid item xs>
                                 <Link href="#" variant="body2">
                                     Forgot password?
                                 </Link>
-                            </Grid>
+                            </Grid> */}
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/signup" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
