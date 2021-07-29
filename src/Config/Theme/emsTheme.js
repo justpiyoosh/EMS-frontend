@@ -10,7 +10,7 @@ const emsTheme = {
     darkGrey: '#303133',
     black: '#000000',
     white: '#FFFFFF',
-    offWhite: '#FDEFEF',
+    offWhite: '#F9F9F9',
     offWhite2: '#E5E5E5',
     darkBlue: '#014651',
     nativeBlue: '#007AFF',
