@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Auth from '../../Config/Auth';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BaseContainer() {
     const classes = useStyles();
+    const history = useHistory();
+
+    const handleLogin = () =>{
+        Auth.authenticate();
+        history.push('/');
+    }
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -89,6 +97,7 @@ export default function BaseContainer() {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={handleLogin}
                         >
                             Sign In
                         </Button>
@@ -99,7 +108,7 @@ export default function BaseContainer() {
                                 </Link>
                             </Grid> */}
                             <Grid item>
-                                <Link href="/signup" variant="body2">
+                                <Link href="/sign-up" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

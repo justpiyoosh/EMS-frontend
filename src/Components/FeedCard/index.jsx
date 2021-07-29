@@ -18,7 +18,10 @@ export default function FeedCard() {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="recipe"
+           className={classes.avatar}
+           src={`images/avatar-${Math.round(Math.random()*8)}.jpg`}
+           >
             S
           </Avatar>
         }
@@ -32,7 +35,7 @@ export default function FeedCard() {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image={`https://source.unsplash.com/random`}
         title="Paella dish"
       />
       <CardContent>

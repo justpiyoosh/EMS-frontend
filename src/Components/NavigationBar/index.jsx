@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Paper from '@material-ui/core/Paper';
-
+import Auth from '../../Config/Auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar() {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleLogOut = () =>{
+    Auth.signOut();
+    history.push('/login');
+  }
 
   return (
     <div className={classes.root}>
@@ -34,7 +41,7 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             Logo
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={handleLogOut}>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

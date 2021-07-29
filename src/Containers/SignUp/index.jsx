@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Auth from '../../Config/Auth';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleSignUp = () => {
+    Auth.authenticate();
+    history.push('/');
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -99,18 +107,19 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSignUp}
           >
             Sign Up
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid>
         </form>
-      </div>    
+      </div>
     </Container>
   );
 }
