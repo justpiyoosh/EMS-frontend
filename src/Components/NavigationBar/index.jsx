@@ -26,9 +26,10 @@ export default function NavBar() {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     Auth.signOut();
-    history.push('/login');
+    if (!Auth.isAuthenticated)
+      history.push('/login');
   }
 
   return (

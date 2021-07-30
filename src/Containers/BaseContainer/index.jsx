@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useHistory } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Auth from '../../Config/Auth';
+import login from '../../Apis/login';
+import Cookies from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,8 +49,14 @@ export default function BaseContainer() {
     const classes = useStyles();
     const history = useHistory();
 
-    const handleLogin = () =>{
-        Auth.authenticate();
+    useEffect(() => {
+        if (Auth.isAuthenticated()) {
+            history.push('/');
+        }
+    }, [Cookies.get('Token')]);
+
+    const handleLogin = () => {
+        login('yashusrivastavab1231@gmail.com', '1');
         history.push('/');
     }
 
