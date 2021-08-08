@@ -18,7 +18,7 @@ export default function FeedCard() {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe"
+          <Avatar
            className={classes.avatar}
            src={`images/avatar-${Math.round(Math.random()*8)}.jpg`}
            >
@@ -30,8 +30,8 @@ export default function FeedCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shivanshu Srivastava"
-        subheader="October 26, 1998"
+        title="Usename"
+        subheader="Active"
       />
       <CardMedia
         className={classes.media}

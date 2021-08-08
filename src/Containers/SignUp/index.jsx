@@ -37,7 +37,7 @@ export default function SignUp() {
   const history = useHistory();
 
   const handleSignUp = () => {
-    Auth.authenticate();
+    Auth.signUp();
     history.push('/');
   }
 

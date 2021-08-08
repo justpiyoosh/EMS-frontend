@@ -39,7 +39,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Logo
+            EMS
           </Typography>
           <Button color="inherit" onClick={handleLogOut}>Logout</Button>
         </Toolbar>

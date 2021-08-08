@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Auth from '../../Config/Auth';
+import { useState } from 'react';
+import Loader from '../../Components/Loader';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,16 +43,29 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    loader: {
+        textAlign: 'center',
+        position: 'fixed',
+        inset: "50%",
+    }
 }));
 
 export default function BaseContainer() {
+    const [isLoading, setLoading] = useState(false);
     const classes = useStyles();
     const history = useHistory();
 
-    const handleLogin = () =>{
-        Auth.authenticate();
-        history.push('/');
+    const handleLogin = (e) => {
+        e.preventDefault();
+        Auth.signIn();
+        setLoading(true);
+        setTimeout(() => {
+            history.push('/');
+            setLoading(false);
+        }, 1000)
     }
+
+    if(isLoading) return <Grid className={classes.loader}><Loader/></Grid>
 
     return (
         <Grid container component="main" className={classes.root}>
