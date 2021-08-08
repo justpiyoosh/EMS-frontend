@@ -23,6 +23,7 @@ const Auth = {
         formData.append("email", email);
         formData.append("password", pass);
         formData.append("password2", confPass);
+        formData.append("dp_code", Math.round(Math.random()*7));
 
         var requestOptions = {
             method: 'POST',

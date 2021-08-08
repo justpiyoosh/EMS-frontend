@@ -17,8 +17,22 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
+  logoText: {
     flexGrow: 1,
+    fontFamily: 'Palette Mosaic, cursive',
+    marginLeft: "40px"
+  },
+  logo: {
+    // flexGrow: 1,
+    display: "inline-flex",
+    fontFamily: 'Palette Mosaic, cursive',
+    marginLeft: "40px",
+    height: 55,
+    width: 55,
+    padding: "4px 5px",
+    borderRadius: "50%",
+    backgroundColor: theme.palette.primary.main,
+    border: '2px solid #333'
   },
 }));
 
@@ -26,7 +40,7 @@ export default function NavBar() {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     Auth.signOut();
     history.push('/login');
   }
@@ -35,13 +49,16 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar position="fixed" component={Paper} color="white">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          {/* <IconButton edge="start" className={classes.menuButton} aria-label="menu">
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            EMS
+          </IconButton> */}
+          <Typography color="textPrimary" variant="h6" className={classes.logo}>
+            ems
           </Typography>
-          <Button color="inherit" onClick={handleLogOut}>Logout</Button>
+          <Typography color="textPrimary" variant="h6" className={classes.logoText}>
+            Enhanced Microblogging Service
+          </Typography>
+          <Button color="primary" size="small" onClick={handleLogOut}>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

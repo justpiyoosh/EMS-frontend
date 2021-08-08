@@ -20,7 +20,7 @@ export default function FeedCard() {
         avatar={
           <Avatar
            className={classes.avatar}
-           src={`images/avatar-${Math.round(Math.random()*8)}.jpg`}
+           src={`images/avatar-${Math.round(Math.random()*7)}.jpg`}
            >
           </Avatar>
         }
