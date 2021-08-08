@@ -51,21 +51,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BaseContainer() {
+
+    const initialValues = {
+        email: "",
+        password: "",
+    }
+
     const [isLoading, setLoading] = useState(false);
+    const [values, setValues] = useState(initialValues);
     const classes = useStyles();
     const history = useHistory();
 
     const handleLogin = (e) => {
-        e.preventDefault();
-        Auth.signIn();
-        setLoading(true);
-        setTimeout(() => {
-            history.push('/');
-            setLoading(false);
-        }, 1000)
+
+        if (values.email !== "" && values.password !== "") {
+            e.preventDefault();
+            Auth.signIn(values.email, values.password);
+            setLoading(true);
+            setTimeout(() => {
+                history.push('/');
+                setLoading(false);
+            }, 1000);
+        }
     }
 
-    if(isLoading) return <Grid className={classes.loader}><Loader/></Grid>
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setValues({
+            ...values,
+            [name]: value,
+        });
+    }
+
+    if (isLoading) return <Grid className={classes.loader}><Loader /></Grid>
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -79,17 +97,18 @@ export default function BaseContainer() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <form className={classes.form} noValidate>
+                    <form className={classes.form} >
                         <TextField
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
                             label="Email Address"
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={values.email}
+                            onChange={handleInputChange}
                         />
                         <TextField
                             variant="outlined"
@@ -99,7 +118,8 @@ export default function BaseContainer() {
                             name="password"
                             label="Password"
                             type="password"
-                            id="password"
+                            value={values.password}
+                            onChange={handleInputChange}
                             autoComplete="current-password"
                         />
                         {/* <FormControlLabel

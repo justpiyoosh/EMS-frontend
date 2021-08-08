@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { NavLink } from 'react-router-dom';
 import useStyles from './style';
 
 export default function FeedCard() {
@@ -22,16 +22,10 @@ export default function FeedCard() {
            className={classes.avatar}
            src={`images/avatar-${Math.round(Math.random()*8)}.jpg`}
            >
-            S
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Usename"
-        subheader="Active"
+        title={<NavLink to={`/username=username`} className={classes.username}>Username</NavLink>}
+        // subheader="active"
       />
       <CardMedia
         className={classes.media}

@@ -1,10 +1,10 @@
 import Cookies from "js-cookie";
 
 const Auth = {
-    async signIn() {
+    async signIn(email, pass) {
         var formData = new FormData();
-        formData.append("username", "yashusrivastavab1231@gmail.com");
-        formData.append("password", "1");
+        formData.append("username", email);
+        formData.append("password", pass);
 
         var requestOptions = {
             method: 'POST',
@@ -17,12 +17,12 @@ const Auth = {
             .then(result => Cookies.set('Token', JSON.parse(result).token))
             .catch(error => console.log('error', error));
     },
-    SignUp() {
+    signUp(username, email, pass, confPass) {
         var formData = new FormData();
-        formData.append("username", "yashu2");
-        formData.append("email", "yashusrivastava@gmail.com");
-        formData.append("password", "1");
-        formData.append("password2", "1");
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("password", pass);
+        formData.append("password2", confPass);
 
         var requestOptions = {
             method: 'POST',
@@ -39,10 +39,12 @@ const Auth = {
         Cookies.set('Token', "null");
     },
     getAuth() {
-        if (Cookies.get('Token') !== 'null')
+        if (Cookies.get('Token') !== 'null' && Cookies.get('Token') !== 'undefined')
             return true;
-        else
+        else {
+            // alert("Either email or password is wrong");
             return false;
+        }
     }
 };
 export default Auth;

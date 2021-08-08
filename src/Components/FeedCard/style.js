@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
         height: 0,
         paddingTop: '56.25%', // 16:9
     },
+    username: {
+        textDecoration: "none",
+        color: "#333",
+    },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',

@@ -29,7 +29,6 @@ const LeftSideBar = () => {
                 subheader={
                     <div>
                         <Typography variant="p">Software Engineer</Typography>
-
                         <Grid className={classes.active}>
                             <FiberManualRecordIcon className={classes.activeBtn} />
                             <span className={classes.activeTxt}>active</span>
