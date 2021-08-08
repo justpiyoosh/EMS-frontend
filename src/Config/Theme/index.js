@@ -9,7 +9,7 @@ const theme = createTheme({
             contrastText: emsTheme.white,
         },
         secondary: {
-            main: emsTheme.darkBlue,
+            main: emsTheme.mediumGrey,
             contrastText: emsTheme.white,
         },
         background: {

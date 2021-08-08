@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     activeBtn: {
-        color: "green",
+        color: theme.palette.primary.main,
         fontSize: 11
     },
     activeTxt: {
