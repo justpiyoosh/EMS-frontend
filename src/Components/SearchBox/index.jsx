@@ -27,8 +27,11 @@ export default function SelectBox() {
         setValue(e.target.value);
     }
 
-    const handleSearch = () =>{
-        history.push(`./search-research=${value}`)
+    const handleSearch = (e) =>{
+        if(value!==""){
+            e.preventDefault();
+            history.push(`./search-research=${value}`)
+        }
     }
 
     return (
@@ -48,7 +51,6 @@ export default function SelectBox() {
                     </InputAdornment>
                 )
             }}
-
         />
     );
 }

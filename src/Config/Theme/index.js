@@ -12,6 +12,10 @@ const theme = createTheme({
             main: emsTheme.mediumGrey,
             contrastText: emsTheme.white,
         },
+        link: {
+            main: emsTheme.nativeBlue,
+            contrastText: emsTheme.white,
+        },
         background: {
             paper: emsTheme.white,
             default: emsTheme.offWhite,
