@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Paper from '@material-ui/core/Paper';
 import Auth from '../../Config/Auth';
+import SelectBox from '../SearchBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,7 @@ export default function NavBar() {
           <Typography color="textPrimary" variant="h6" className={classes.logoText}>
             Enhanced Microblogging Service
           </Typography>
+          <SelectBox/>
           <Button color="primary" size="small" onClick={handleLogOut}>Logout</Button>
         </Toolbar>
       </AppBar>
