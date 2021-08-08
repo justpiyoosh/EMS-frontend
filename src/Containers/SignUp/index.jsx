@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useHistory } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Auth from '../../Config/Auth';
+import login from '../../Apis/login';
+import Cookies from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const history = useHistory();
+
+  useEffect(() => {
+    if (Auth.isAuthenticated()) {
+      history.push('/');
+    }
+  }, [Cookies.get('Token')]);
 
   const handleSignUp = () => {
     Auth.signUp();
